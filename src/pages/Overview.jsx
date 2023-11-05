@@ -15,14 +15,21 @@ import {
   Grid,
   Card,
   CardContent,
+  Badge,
 } from '@mui/material';
 
 import MenuIcon from '@mui/icons-material/Menu';
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 import ChevronRightIcon from '@mui/icons-material/ChevronRight';
-import InboxIcon from '@mui/icons-material/Inbox';
 import MailIcon from '@mui/icons-material/Mail';
 import ListItemIcon from '@mui/material/ListItemIcon';
+import AccountCircle from '@mui/icons-material/AccountCircle';
+import NotificationsIcon from '@mui/icons-material/Notifications';
+import LogoutIcon from '@mui/icons-material/Logout';
+import BarChartIcon from '@mui/icons-material/BarChart';
+import InventoryIcon from '@mui/icons-material/Inventory';
+import GroupIcon from '@mui/icons-material/Group';
+import DashboardIcon from '@mui/icons-material/Dashboard';
 
 import MuiAppBar from '@mui/material/AppBar';
 
@@ -33,6 +40,8 @@ import SalesOverview from '../components/SalesOverview';
 import MonthlySales from '../components/MonthlySales';
 import GrowthRate from '../components/GrowthRate';
 import CustomerCard from '../components/CustomerCard';
+
+import { Link } from 'react-router-dom';
 
 const drawerWidth = 240;
 
@@ -83,7 +92,7 @@ const DrawerHeader = styled('div')(({ theme }) => ({
 
 export default function Overview() {
   const theme = useTheme();
-  const [open, setOpen] = React.useState(false);
+  const [open, setOpen] = React.useState(true);
 
   const handleDrawerOpen = () => {
     setOpen(true);
@@ -97,16 +106,44 @@ export default function Overview() {
     <Box sx={{ display: 'flex' }}>
       <CssBaseline />
       <AppBar position="fixed" open={open} >
-        <Toolbar variant="dense">
+        <Toolbar variant="dense" sx={{ display: 'flex', justifyContent: 'space-between' }}>
           <IconButton
             color="inherit"
             aria-label="open drawer"
             onClick={handleDrawerOpen}
             edge="start"
-            sx={{ mr: 2, ...(open && { display: 'none' }) }}
           >
-            <MenuIcon />
+            <MenuIcon sx={{ mr: 2, ...(open && { display: 'none' }) }} />
           </IconButton>
+
+          <div>
+            <IconButton size="large" aria-label="show 4 new mails" color="inherit">
+              <Badge badgeContent={4} color="error">
+                <MailIcon />
+              </Badge>
+            </IconButton>
+
+            <IconButton
+              size="large"
+              aria-label="show 17 new notifications"
+              color="inherit"
+            >
+              <Badge badgeContent={17} color="error">
+                <NotificationsIcon />
+              </Badge>
+            </IconButton>
+
+            <IconButton
+              size="large"
+              aria-label="account of current user"
+              aria-controls="primary-search-account-menu"
+              aria-haspopup="true"
+              color="inherit"
+            >
+              <AccountCircle />
+            </IconButton>
+          </div>
+
         </Toolbar>
       </AppBar>
       <Drawer
@@ -123,32 +160,62 @@ export default function Overview() {
         open={open}
       >
         <DrawerHeader>
-          <Typography variant='h5' sx={{ flexGrow: 1, textAlign: 'center' }}>Dashboard</Typography>
+          <Typography variant='h5' sx={{ flexGrow: 1, textAlign: 'center' }}></Typography>
           <IconButton onClick={handleDrawerClose}>
             {theme.direction === 'ltr' ? <ChevronLeftIcon /> : <ChevronRightIcon />}
           </IconButton>
         </DrawerHeader>
 
         <Divider />
-        <List>
-          {['Inbox', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
-            <ListItem key={text} disablePadding>
+        <List sx={{ marginBottom: 'auto' }}>
+        <Link to="/" style={{textDecoration: 'none', color: '#202020'}}>
+            <ListItem disablePadding>
               <ListItemButton>
                 <ListItemIcon>
-                  {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
+                  <DashboardIcon />
                 </ListItemIcon>
-                <ListItemText primary={text} />
+                <ListItemText primary={"Overview"} />
               </ListItemButton>
             </ListItem>
-          ))}
+          </Link>
+
+          <Link to="/sales-report" style={{textDecoration: 'none', color: '#202020'}}>
+            <ListItem disablePadding>
+              <ListItemButton>
+                <ListItemIcon>
+                  <BarChartIcon />
+                </ListItemIcon>
+                <ListItemText primary={"Sales Report"} />
+              </ListItemButton>
+            </ListItem>
+          </Link>
+
+          <ListItem disablePadding>
+            <ListItemButton>
+              <ListItemIcon>
+                <InventoryIcon />
+              </ListItemIcon>
+              <ListItemText primary={"Inventory"} />
+            </ListItemButton>
+          </ListItem>
+
+          <ListItem disablePadding>
+            <ListItemButton>
+              <ListItemIcon>
+                <GroupIcon />
+              </ListItemIcon>
+              <ListItemText primary={"Customer"} />
+            </ListItemButton>
+          </ListItem>
         </List>
         <Divider />
+
         <List>
-          {['All mail', 'Trash', 'Spam'].map((text, index) => (
+          {['Logout'].map((text) => (
             <ListItem key={text} disablePadding>
               <ListItemButton>
                 <ListItemIcon>
-                  {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
+                  <LogoutIcon />
                 </ListItemIcon>
                 <ListItemText primary={text} />
               </ListItemButton>

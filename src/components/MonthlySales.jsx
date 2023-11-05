@@ -10,51 +10,51 @@ import { AreaChart, Area, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContai
 const salesPerMonth = [
     {
         "name": "2",
-        "sales": 6142,
+        "sales": 6140,
     },
     {
         "name": "4",
-        "sales": 9375,
+        "sales": 9370,
     },
     {
         "name": "6",
-        "sales": 18237,
+        "sales": 18230,
     },
     {
         "name": "8",
-        "sales": 12456,
+        "sales": 9070,
     },
     {
         "name": "10",
-        "sales": 21189,
+        "sales": 3180,
     },
     {
         "name": "12",
-        "sales": 7523,
+        "sales": 9520,
     },
     {
         "name": "14",
-        "sales": 2698,
+        "sales": 6490,
     },
     {
         "name": "16",
-        "sales": 15874,
+        "sales": 16870,
     },
     {
         "name": "18",
-        "sales": 8996,
+        "sales": 8990,
     },
     {
         "name": "20",
-        "sales": 21633,
-    },
-    {
-        "name": "22",
         "sales": 19500,
     },
     {
+        "name": "22",
+        "sales": 10200,
+    },
+    {
         "name": "24",
-        "sales": 6200,
+        "sales": 5200,
     },
     {
         "name": "26",
@@ -62,11 +62,11 @@ const salesPerMonth = [
     },
     {
         "name": "28",
-        "sales": 17000,
+        "sales": 9200,
     },
     {
         "name": "30",
-        "sales": 9200,
+        "sales": 19200,
     },
 ];
 
