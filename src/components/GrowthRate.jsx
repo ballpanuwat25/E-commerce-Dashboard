@@ -90,7 +90,7 @@ export default function GrowthRate() {
   return (
     <Card sx={{ height: 350 }}>
       <CardContent>
-        <Typography variant='h5' sx={{ marginBottom: '10px', borderBottom: '1px solid #FF3737' }}>Growth Rate</Typography>
+        <Typography variant='h5' sx={{ marginBottom: '10px', borderBottom: '1px solid #202020' }}>Growth Rate</Typography>
 
         <ResponsiveContainer width="100%" height={300}>
           <LineChart width={730} height={250} data={customer}
@@ -100,8 +100,8 @@ export default function GrowthRate() {
             <YAxis />
             <Tooltip />
             <Legend />
-            <Line type="monotone" dataKey="current month" stroke="#FF3737" activeDot={{ r: 8 }} />
-            <Line type="monotone" dataKey="last month" stroke="#FF8139" />
+            <Line type="monotone" dataKey="current month" stroke="#202020" activeDot={{ r: 8 }} />
+            <Line type="monotone" dataKey="last month" stroke="#777777" />
           </LineChart>
         </ResponsiveContainer>
       </CardContent>

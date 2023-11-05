@@ -87,7 +87,7 @@ const DrawerHeader = styled('div')(({ theme }) => ({
   padding: theme.spacing(0, 1),
   ...theme.mixins.toolbar,
   justifyContent: 'flex-end',
-  height: '10px',
+  height: '20px',
 }));
 
 export default function Overview() {
@@ -105,15 +105,15 @@ export default function Overview() {
   return (
     <Box sx={{ display: 'flex' }}>
       <CssBaseline />
-      <AppBar position="fixed" open={open} >
-        <Toolbar variant="dense" sx={{ display: 'flex', justifyContent: 'space-between' }}>
+      <AppBar position="fixed" open={open} sx={{ boxShadow: 'none', borderBottom: '1px solid #E4E4E4', backgroundColor: '#fff' }} >
+        <Toolbar sx={{ display: 'flex', justifyContent: 'space-between' }}>
           <IconButton
             color="inherit"
             aria-label="open drawer"
             onClick={handleDrawerOpen}
             edge="start"
           >
-            <MenuIcon sx={{ mr: 2, ...(open && { display: 'none' }) }} />
+            <MenuIcon sx={{ ...(open && { display: 'none' }) }} />
           </IconButton>
 
           <div>
@@ -160,7 +160,11 @@ export default function Overview() {
         open={open}
       >
         <DrawerHeader>
-          <Typography variant='h5' sx={{ flexGrow: 1, textAlign: 'center' }}></Typography>
+          <Typography variant='h6' sx={{ flexGrow: 1, textAlign: 'center' }}>
+            <Link to="https://github.com/ballpanuwat25" style={{ textDecoration: 'none', color: '#202020' }}>
+              ballpanuwat25 ⚽
+            </Link>
+          </Typography>
           <IconButton onClick={handleDrawerClose}>
             {theme.direction === 'ltr' ? <ChevronLeftIcon /> : <ChevronRightIcon />}
           </IconButton>
@@ -168,7 +172,7 @@ export default function Overview() {
 
         <Divider />
         <List sx={{ marginBottom: 'auto' }}>
-        <Link to="/" style={{textDecoration: 'none', color: '#202020'}}>
+          <Link to="/" style={{ textDecoration: 'none', color: '#202020' }}>
             <ListItem disablePadding>
               <ListItemButton>
                 <ListItemIcon>
@@ -179,7 +183,7 @@ export default function Overview() {
             </ListItem>
           </Link>
 
-          <Link to="/sales-report" style={{textDecoration: 'none', color: '#202020'}}>
+          <Link to="/sales-report" style={{ textDecoration: 'none', color: '#202020' }}>
             <ListItem disablePadding>
               <ListItemButton>
                 <ListItemIcon>
@@ -190,23 +194,27 @@ export default function Overview() {
             </ListItem>
           </Link>
 
-          <ListItem disablePadding>
-            <ListItemButton>
-              <ListItemIcon>
-                <InventoryIcon />
-              </ListItemIcon>
-              <ListItemText primary={"Inventory"} />
-            </ListItemButton>
-          </ListItem>
+          <Link to="/inventory" style={{ textDecoration: 'none', color: '#202020' }}>
+            <ListItem disablePadding>
+              <ListItemButton>
+                <ListItemIcon>
+                  <InventoryIcon />
+                </ListItemIcon>
+                <ListItemText primary={"Inventory"} />
+              </ListItemButton>
+            </ListItem>
+          </Link>
 
-          <ListItem disablePadding>
-            <ListItemButton>
-              <ListItemIcon>
-                <GroupIcon />
-              </ListItemIcon>
-              <ListItemText primary={"Customer"} />
-            </ListItemButton>
-          </ListItem>
+          <Link to="/customers" style={{ textDecoration: 'none', color: '#202020' }}>
+            <ListItem disablePadding>
+              <ListItemButton>
+                <ListItemIcon>
+                  <GroupIcon />
+                </ListItemIcon>
+                <ListItemText primary={"Customer"} />
+              </ListItemButton>
+            </ListItem>
+          </Link>
         </List>
         <Divider />
 

@@ -73,17 +73,17 @@ const salesPerMonth = [
 export default function MonthlySales() {
     return (
         <div>
-            <Card sx={{ height: 375 }}>
+            <Card sx={{ height: 350 }}>
                 <CardContent>
-                    <Typography variant='h5' sx={{ marginBottom: '10px', borderBottom: '1px solid #FF3737' }}>Monthly Sales</Typography>
+                    <Typography variant='h5' sx={{ marginBottom: '10px', borderBottom: '1px solid #202020' }}>Monthly Sales</Typography>
 
                     <ResponsiveContainer width="100%" height={300}>
                         <AreaChart width={730} height={250} data={salesPerMonth}
                             margin={{ top: 10, right: 20, left: 0, bottom: 20 }}>
                             <defs>
                                 <linearGradient id="colorPv" x1="0" y1="0" x2="0" y2="1">
-                                    <stop offset="5%" stopColor="#FF3737" stopOpacity={0.8} />
-                                    <stop offset="95%" stopColor="#FF3737" stopOpacity={0} />
+                                    <stop offset="5%" stopColor="#202020" stopOpacity={0.8} />
+                                    <stop offset="95%" stopColor="#202020" stopOpacity={0} />
                                 </linearGradient>
                             </defs>
                             <XAxis dataKey="name" >
@@ -92,7 +92,7 @@ export default function MonthlySales() {
                             <YAxis />
                             <CartesianGrid strokeDasharray="3 3" />
                             <Tooltip />
-                            <Area type="monotone" dataKey="sales" stroke="#FF3737" fillOpacity={1} fill="url(#colorPv)" />
+                            <Area type="monotone" dataKey="sales" stroke="#202020" fillOpacity={1} fill="url(#colorPv)" />
                         </AreaChart>
                     </ResponsiveContainer>
                 </CardContent>

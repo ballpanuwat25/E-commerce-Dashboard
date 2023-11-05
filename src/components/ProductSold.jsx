@@ -57,9 +57,9 @@ const productSold = [
 
 export default function ProductSold() {
     return (
-        <Card sx={{ height: 375 }}>
+        <Card sx={{ height: 350 }}>
             <CardContent>
-                <Typography variant='h5' sx={{ marginBottom: '10px', borderBottom: '1px solid #FF3737' }}>Products Sold</Typography>
+                <Typography variant='h5' sx={{ marginBottom: '10px', borderBottom: '1px solid #202020' }}>Products Sold</Typography>
 
                 <Typography variant='h6' sx={{ fontSize: 14, marginTop: '16px' }} > Total Units Sold </Typography>
                 <LinearProgress variant="determinate" value={50} />
@@ -73,7 +73,7 @@ export default function ProductSold() {
 
             <ResponsiveContainer width="100%" height={150}>
                 <LineChart data={productSold} margin={{ top: 20, right: 30, left: 30, bottom: 20 }}>
-                    <Line type="monotone" dataKey="pv" stroke="#FF3737" strokeWidth={2} />
+                    <Line type="monotone" dataKey="pv" stroke="#202020" strokeWidth={2} />
                 </LineChart>
             </ResponsiveContainer>
         </Card>

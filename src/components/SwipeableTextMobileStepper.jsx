@@ -71,7 +71,7 @@ function SwipeableTextMobileStepper() {
           width: '100%',
         }}
       >
-        <Typography variant='h5' sx={{ marginBottom: '10px', marginTop: '12px', borderBottom: '1px solid #FF3737', width: '100%', }} >{images[activeStep].label}</Typography>
+        <Typography variant='h5' sx={{ marginBottom: '10px', marginTop: '12px', borderBottom: '1px solid #202020', width: '100%', }} >{images[activeStep].label}</Typography>
       </Paper>
       <AutoPlaySwipeableViews
         axis={theme.direction === 'rtl' ? 'x-reverse' : 'x'}

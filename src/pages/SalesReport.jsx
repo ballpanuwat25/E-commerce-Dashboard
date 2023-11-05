@@ -29,6 +29,8 @@ import {
   Tooltip,
   TextField,
   MenuItem,
+  Menu,
+  Chip,
 } from '@mui/material';
 
 import MenuIcon from '@mui/icons-material/Menu';
@@ -46,6 +48,7 @@ import DashboardIcon from '@mui/icons-material/Dashboard';
 
 import DeleteIcon from '@mui/icons-material/Delete';
 import FilterListIcon from '@mui/icons-material/FilterList';
+import MoreVertIcon from '@mui/icons-material/MoreVert';
 
 import MuiAppBar from '@mui/material/AppBar';
 
@@ -95,7 +98,7 @@ const DrawerHeader = styled('div')(({ theme }) => ({
   padding: theme.spacing(0, 1),
   ...theme.mixins.toolbar,
   justifyContent: 'flex-end',
-  height: '10px',
+  height: '20px',
 }));
 
 function createData(id, order, customer, product, item, date, price, status) {
@@ -198,6 +201,12 @@ const headCells = [
     disablePadding: false,
     label: 'Status',
   },
+  {
+    id: '',
+    numeric: true,
+    disablePadding: false,
+    label: '',
+  },
 ];
 
 function EnhancedTableHead(props) {
@@ -210,17 +219,7 @@ function EnhancedTableHead(props) {
   return (
     <TableHead>
       <TableRow>
-        <TableCell padding="checkbox">
-          <Checkbox
-            color="primary"
-            indeterminate={numSelected > 0 && numSelected < rowCount}
-            checked={rowCount > 0 && numSelected === rowCount}
-            onChange={onSelectAllClick}
-            inputProps={{
-              'aria-label': 'select all desserts',
-            }}
-          />
-        </TableCell>
+        <TableCell padding="checkbox" />
         {headCells.map((headCell) => (
           <TableCell
             key={headCell.id}
@@ -439,8 +438,8 @@ export default function SalesReport() {
   return (
     <Box sx={{ display: 'flex' }}>
       <CssBaseline />
-      <AppBar position="fixed" open={open} >
-        <Toolbar variant='dense' sx={{ display: 'flex', justifyContent: 'space-between' }}>
+      <AppBar position="fixed" open={open} sx={{ boxShadow: 'none', borderBottom: '1px solid #E4E4E4', backgroundColor: '#fff' }} >
+        <Toolbar sx={{ display: 'flex', justifyContent: 'space-between' }}>
           <IconButton
             color="inherit"
             aria-label="open drawer"
@@ -494,7 +493,11 @@ export default function SalesReport() {
         open={open}
       >
         <DrawerHeader>
-          <Typography variant='h5' sx={{ flexGrow: 1, textAlign: 'center' }}></Typography>
+          <Typography variant='h6' sx={{ flexGrow: 1, textAlign: 'center' }}>
+            <Link to="https://github.com/ballpanuwat25" style={{ textDecoration: 'none', color: '#202020' }}>
+              ballpanuwat25 ⚽
+            </Link>
+          </Typography>
           <IconButton onClick={handleDrawerClose}>
             {theme.direction === 'ltr' ? <ChevronLeftIcon /> : <ChevronRightIcon />}
           </IconButton>
@@ -524,23 +527,27 @@ export default function SalesReport() {
             </ListItem>
           </Link>
 
-          <ListItem disablePadding>
-            <ListItemButton>
-              <ListItemIcon>
-                <InventoryIcon />
-              </ListItemIcon>
-              <ListItemText primary={"Inventory"} />
-            </ListItemButton>
-          </ListItem>
+          <Link to="/inventory" style={{ textDecoration: 'none', color: '#202020' }}>
+            <ListItem disablePadding>
+              <ListItemButton>
+                <ListItemIcon>
+                  <InventoryIcon />
+                </ListItemIcon>
+                <ListItemText primary={"Inventory"} />
+              </ListItemButton>
+            </ListItem>
+          </Link>
 
-          <ListItem disablePadding>
-            <ListItemButton>
-              <ListItemIcon>
-                <GroupIcon />
-              </ListItemIcon>
-              <ListItemText primary={"Customer"} />
-            </ListItemButton>
-          </ListItem>
+          <Link to="/customers" style={{ textDecoration: 'none', color: '#202020' }}>
+            <ListItem disablePadding>
+              <ListItemButton>
+                <ListItemIcon>
+                  <GroupIcon />
+                </ListItemIcon>
+                <ListItemText primary={"Customer"} />
+              </ListItemButton>
+            </ListItem>
+          </Link>
         </List>
         <Divider />
 
@@ -622,23 +629,13 @@ export default function SalesReport() {
                     return (
                       <TableRow
                         hover
-                        onClick={(event) => handleClick(event, row.id)}
                         role="checkbox"
                         aria-checked={isItemSelected}
                         tabIndex={-1}
                         key={row.id}
                         selected={isItemSelected}
-                        sx={{ cursor: 'pointer' }}
                       >
-                        <TableCell padding="checkbox">
-                          <Checkbox
-                            color="primary"
-                            checked={isItemSelected}
-                            inputProps={{
-                              'aria-labelledby': labelId,
-                            }}
-                          />
-                        </TableCell>
+                        <TableCell padding="checkbox" />
                         <TableCell
                           component="th"
                           id={labelId}
@@ -652,7 +649,40 @@ export default function SalesReport() {
                         <TableCell align="right">{row.item}</TableCell>
                         <TableCell align="right">{row.date}</TableCell>
                         <TableCell align="right">{row.price}</TableCell>
-                        <TableCell align="right">{row.status}</TableCell>
+                        <TableCell align="right">
+                          <Chip
+                            label={row.status}
+                            sx={{
+                              backgroundColor:
+                                row.status === 'Completed'
+                                  ? '#A9FF9B'
+                                  : row.status === 'Pending'
+                                    ? '#FFE793'
+                                    : '#FFBABA',
+                              color:
+                                row.status === 'Completed'
+                                  ? '#169B00'
+                                  : row.status === 'Pending'
+                                    ? '#EF8F00'
+                                    : '#FF3737',
+                            }}
+                          />
+                        </TableCell>
+                        <TableCell align="right">
+                          <div style={{ visibility: 'hidden' }}>
+                            <IconButton
+                            >
+                              <MoreVertIcon sx={{ fontSize: '16px' }} />
+                            </IconButton>
+                            <Menu
+                              id="long-menu"
+                              MenuListProps={{
+                                'aria-labelledby': 'long-button',
+                              }}
+                            >
+                            </Menu>
+                          </div>
+                        </TableCell>
                       </TableRow>
                     );
                   })}
